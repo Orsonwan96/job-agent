@@ -1,0 +1,36 @@
+version: 1
+stage: prepare_only
+
+allowed_sources:
+  - manual_job_description
+  - manual_job_url
+  - linkedin_job_alert_email
+  - greenhouse_public_job_api
+  - lever_public_postings_api
+
+prohibited_actions:
+  - scrape_linkedin
+  - automate_linkedin_interactions
+  - bypass_captcha
+  - bypass_access_controls
+  - accept_terms_automatically
+  - invent_candidate_information
+  - submit_applications
+
+always_require_review:
+  - legal_attestations
+  - demographic_questions
+  - work_authorization_ambiguity
+  - compensation_questions
+  - relocation_commitments
+  - custom_essays
+  - account_creation
+
+truthfulness:
+  verified_evidence_required: true
+  unsupported_requirements_become_gaps: true
+  generated_claims_require_validation: true
+
+limits:
+  max_jobs_per_run: null
+  max_model_cost_per_run_usd: null

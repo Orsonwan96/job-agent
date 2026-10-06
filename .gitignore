@@ -1,0 +1,38 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+
+# Environments and secrets
+.venv/
+.env
+.env.*
+!.env.example
+
+# Editors
+.idea/
+.vscode/
+
+# Private candidate and job data
+data/private/*
+!data/private/.gitkeep
+
+# Generated output and operational data
+artifacts/*
+!artifacts/.gitkeep
+logs/
+traces/
+*.sqlite
+*.sqlite3
+
+# Build output
+build/
+dist/

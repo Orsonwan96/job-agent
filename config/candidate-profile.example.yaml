@@ -1,0 +1,29 @@
+# Copy this file to data/private/candidate-profile.yaml and fill it in.
+# The private copy is ignored by Git.
+
+target_roles: []
+acceptable_seniority: []
+
+preferred_locations: []
+remote_preference: null
+relocation_allowed: null
+
+employment_types:
+  - full_time
+
+minimum_base_salary: null
+
+work_authorization:
+  country: null
+  requires_sponsorship: null
+
+preferred_industries: []
+excluded_industries: []
+
+strong_skills: []
+developing_skills: []
+
+career_direction: ""
+must_have: []
+nice_to_have: []
+automatic_skip_conditions: []
