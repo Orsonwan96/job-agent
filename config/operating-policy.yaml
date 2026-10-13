@@ -1,4 +1,4 @@
-version: 1
+version: 2
 stage: prepare_only
 
 allowed_sources:
@@ -20,11 +20,48 @@ prohibited_actions:
 always_require_review:
   - legal_attestations
   - demographic_questions
-  - work_authorization_ambiguity
+  - candidate_work_authorization_ambiguity
   - compensation_questions
   - relocation_commitments
   - custom_essays
   - account_creation
+
+job_decision_rules:
+  sponsorship:
+    when_required_by_profile:
+      employer_offers_sponsorship: allow
+      employer_sponsorship_unknown: allow
+      employer_does_not_offer_sponsorship: deny
+    when_not_required_by_profile:
+      any_employer_sponsorship_status: allow
+
+  compensation:
+    at_or_above_profile_minimum: allow
+    below_profile_minimum: review
+    compensation_not_listed: allow
+
+  role_relevance:
+    target_or_semantically_related_work: allow
+    different_title_alone: allow
+    unrelated_work: deny
+
+  location:
+    preferred_location: allow
+    remote_compatible: allow
+    relocation_compatible: allow
+    incompatible_location: deny
+
+  ranking:
+    preference_source: candidate_profile
+    prioritize_target_role_family: true
+    apply_profile_preferences_as_score_adjustments: true
+    profile_hard_constraints_may_deny: true
+    title_mismatch_alone_may_deny: false
+
+decision_aggregation:
+  deny_if_any_rule_denies: true
+  review_if_no_deny_and_any_rule_reviews: true
+  allow_if_all_applicable_rules_allow: true
 
 truthfulness:
   verified_evidence_required: true
